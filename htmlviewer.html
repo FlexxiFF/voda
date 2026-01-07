@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hyper 3D Social Links</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Animated dark background */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 60%);
+    animation: bgMove 26s linear infinite;
+}
+
+body::after {
+    opacity: 0.4;
+    animation-duration: 36s;
+}
+
+@keyframes bgMove {
+    0% { transform: translate(-8%, -8%); }
+    50% { transform: translate(8%, 8%); }
+    100% { transform: translate(-8%, -8%); }
+}
+
+.container {
+    perspective: 1200px;
+    z-index: 1;
+}
+
+.card {
+    width: 360px;
+    padding: 34px;
+    border-radius: 26px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 25px 55px rgba(0,0,0,0.7),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.card:hover {
+    transform: rotateX(8deg) rotateY(-8deg);
+}
+
+/* Profile */
+.profile {
+    text-align: center;
+    margin-bottom: 28px;
+    transform: translateZ(30px);
+}
+
+.avatar-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 16px;
+}
+
+/* Profile image */
+.avatar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2; /* above glow */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Glow ring behind the image */
+.glow-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(
+        rgba(255,255,255,0.9),
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.9)
+    );
+    animation: spin 7s linear infinite;
+    z-index: 1; /* behind avatar */
+}
+
+/* Soft blur aura behind glow */
+.glow-blur {
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    filter: blur(26px);
+    opacity: 0.6;
+    z-index: 0; /* farthest back */
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.profile h1 {
+    font-size: 22px;
+}
+
+.profile p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 6px;
+}
+
+/* Links */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+    transform: translateZ(20px);
+    transition: all 0.35s ease;
+}
+
+.link i {
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+}
+
+.link span {
+    flex: 1;
+    text-align: center;
+}
+
+.link::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, #ffffff, #888888, #ffffff);
+    opacity: 0;
+    filter: blur(12px);
+    z-index: -1;
+    transition: opacity 0.35s ease;
+}
+
+.link:hover {
+    transform: translateZ(40px) scale(1.05);
+}
+
+.link:hover::before {
+    opacity: 0.8;
+}
+
+.footer {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="profile">
+            <div class="avatar-wrap">
+                <div class="avatar">
+                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" alt="Profile">
+                </div>
+                <div class="glow-ring"></div>
+                <div class="glow-blur"></div>
+            </div>
+            <h1>Your Name</h1>
+            <p>Digital Creator</p>
+        </div>
+
+        <div class="links">
+            <a href="https://www.instagram.com/flexxi.fxf/" target="_blank" class="link">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+
+            <a href="https://discord.gg/xp9732B3Eq" target="_blank" class="link">
+                <i class="fa-brands fa-discord"></i>
+                <span>Discord</span>
+            </a>
+
+            <a href="https://t.me/ClonexEsports" target="_blank" class="link">
+                <i class="fa-brands fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
